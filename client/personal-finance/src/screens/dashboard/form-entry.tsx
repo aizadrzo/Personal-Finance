@@ -32,6 +32,8 @@ import {
   CardFooter,
   CardHeader,
 } from "../../components/ui/card";
+import { useFinancialRecords } from "../../hooks/useFinancialRecords";
+import { FinancialRecord } from "../../types";
 
 const categories = [
   {
@@ -59,8 +61,9 @@ const categories = [
 const FormEntry = () => {
   const form = useForm();
   const { handleSubmit, control } = form;
-  const submitForm = (data) => {
-    console.log(data);
+  const { addRecord } = useFinancialRecords();
+  const submitForm = (data: FinancialRecord) => {
+    addRecord(data);
   };
   return (
     <Card className="w-[500px]">
